@@ -1,0 +1,53 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "xprotocol",
+					"enableSsl": "Disabled"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": "<Your_Remote_Server_Port>",
+				"driver": "MySQL",
+				"name": "MySQL80",
+				"database": "passmanager_db",
+				"username": "root",
+				"connectionTimeout": 30
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default",
+					"enableSsl": "Disabled"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": "<Your_Remote_Server_Port>",
+				"driver": "MySQL",
+				"database": "ciphervault",
+				"name": "Vault Conn",
+				"username": "Cipher Dungeon Vault",
+				"password": "Your_PAssword_Here"
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default",
+					"enableSsl": "Disabled"
+				},
+				"previewLimit": 50,
+				"server": "<Your_Remote_Server_IP>",
+				"port": "<Your_Remote_Server_Port>",
+				"driver": "MySQL",
+				"name": "Cipher Dungeon KDB Conn",
+				"database": "remote_KDB",
+				"username": "kenberns",
+				"password": "Your_PAssword_Here"
+			}
+		]
+	}
+}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Password Vault</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <div class="actions">
+        <button onclick="window.location.href='{{ url_for( 'views.add_secret' )}}'" > Add New Password</button>
+        <button onclick="window.location.href='{{ url_for('auth.logout') }}'">Logout</button>
+    </div>
+
+    <div class="secrets-list">
+        {% if secrets %}
+            {% for secret in secrets %}
+            <div class="secret-item">
+                <h3>{{ secret.label }}</h3>
+                <p>Username: {{ secret.login_username }}</p>
+                <p>
+                    Password: 
+                    <span id="password-{{ secret.id }}" class="password-field">********</span>
+                    <button onclick="revealPassword({{ secret.id }})">Show/Hide</button>
+                    <button onclick="deleteSecret({{ secret.id }})">Delete</button>
+                </p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No saved passwords yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .actions { margin: 20px 0; }
+    .secret-item { 
+        border: 1px solid #ddd; 
+        padding: 15px; 
+        margin: 10px 0; 
+        border-radius: 5px;
+        background: white;
+    }
+    .password-field { 
+        font-family: monospace; 
+        margin: 0 10px;
+        background: #f5f5f5;
+        padding: 2px 5px;
+    }
+</style>
+
+<script>
+async function revealPassword(secretId) {
+    try {
+        const field = document.getElementById(`password-${secretId}`);
+        if (field.textContent === '********') {
+            const response = await fetch(`/reveal/${secretId}`);
+            if (response.ok) {
+                const data = await response.json();
+                field.textContent = data.password;
+                // Hide password after 10 seconds
+                setTimeout(() => {
+                    field.textContent = '********';
+                }, 10000);
+            }
+        } else {
+            field.textContent = '********';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error revealing password');
+    }
+}
+
+async function deleteSecret(secretId) {
+    if (confirm('Are you sure you want to delete this password?')) {
+        try {
+            const response = await fetch(`/delete/${secretId}`, {
+                method: 'POST'
+            });
+            if (response.ok) {
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error deleting password');
+        }
+    }
+}
+</script>
+{% endblock %}
