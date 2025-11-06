@@ -31,7 +31,7 @@
 				"driver": "MySQL",
 				"database": "ciphervault",
 				"name": "Vault Conn",
-				"username": "Cipher Dungeon Vault",
+				"username": "Password Manager Vault",
 				"password": "Your_PAssword_Here"
 			},
 			{
@@ -43,9 +43,9 @@
 				"server": "<Your_Remote_Server_IP>",
 				"port": "<Your_Remote_Server_Port>",
 				"driver": "MySQL",
-				"name": "Cipher Dungeon KDB Conn",
+				"name": "Remote KDB Conn",
 				"database": "remote_KDB",
-				"username": "kenberns",
+				"username": "FakeUsername",
 				"password": "Your_PAssword_Here"
 			}
 		]
