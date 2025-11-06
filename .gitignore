@@ -12,7 +12,6 @@ Certs/
 # Sensitive configuration files
 app_config.py
 DigitalOcean-MySQL.txt
-README.md
 
 # Python
 __pycache__/
