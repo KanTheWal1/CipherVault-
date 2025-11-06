@@ -1,8 +1,9 @@
 # Password Manager - Cipher-Dungeon 
-### > **Note:** This README contains setup documentation with placeholder values.
-### > Configure actual credentials in `.env` file (see `.env.example` for template).
+#### **Note:** This README contains setup documentation with placeholder values.
+#### Configure actual credentials in `.env` file (see `.env.example` for template).
 
-### > Digital Ocean Alma8 Droplet and MySQL remote server: 
+
+### *** Digital Ocean Alma8 Droplet and MySQL remote server: ***
 --------------------------------------------------------
 
 
@@ -161,5 +162,6 @@ Now in DB.
 --------------------------------------------------------
 
 https://www.lastpass.com/features/password-generator
+
 
 
