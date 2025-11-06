@@ -86,12 +86,14 @@ systemctl enable knockd
 ### Vault:
 --------------------------------------------------------
 USN: Cipher Dungeon Vault
+
 PSW: Your_Password_Here
 
 --------------------------------------------------------
 ### MySQL KMS and Alma8 root user:
 --------------------------------------------------------
 USN: Cipher Dungeon KDB
+
 PSW: Your_Password_Here
 
 --------------------------------------------------------
@@ -103,15 +105,21 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 ### DB entries:
 --------------------------------------------------------
 fakeEmail1@email.com
+
 Your_Password_Here
+
 Wrong PSW: Wrong_Password_Here1
 
 fakeEmail2@gmail.com 
+
 Your_Password_Here
+
 Wrong PSW: Wrong_Password_Here2
 
 fakeEmail3@email.com
+
 Your_Password_Here
+
 Wrong PSW: Wrong_Password_Here3
 
 fakeEmail4@
@@ -121,7 +129,9 @@ fakeEmail4@
 CREATE USER 'fakeEmail1'@'localhost' IDENTIFIED BY 'Your_DB_Password_Here';
 
 CREATE USER 'fakeEmail1'@'%' IDENTIFIED BY 'Your_DB_Password_Here';
+
 GRANT ALL PRIVILEGES ON *.* TO 'fakeEmail1'@'%' WITH GRANT OPTION;
+
 FLUSH PRIVILEGES;
 
 --------------------------------------------------------
@@ -130,8 +140,8 @@ FLUSH PRIVILEGES;
 
 ssh root@<IP Address> $<Password>>
 
-Get to user fakeEmail1: 
- mysql -u fakeEmail1 -p -h <IP Address> -P <Port>
+Get to user fakeEmail1: mysql -u fakeEmail1 -p -h <IP Address> -P <Port>
+
 PSW: Your_DB_Password_Here
 
 Now in DB.
@@ -139,15 +149,17 @@ Now in DB.
 --------------------------------------------------------
 ### DB Test Cases: 
 --------------------------------------------------------
-
 "normal_user"
+
 "user' OR '1'='1"
+
 "user' --" 
+
 "user' UNION SELECT * FROM users--"
+
 "user'; DROP TABLE secrets--"
-
-
-
+--------------------------------------------------------
 
 https://www.lastpass.com/features/password-generator
+
 
